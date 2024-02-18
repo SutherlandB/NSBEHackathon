@@ -1,10 +1,28 @@
 import Image from "next/image";
-
+import Head from 'next/head';
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p> Hello </p>
+    
+    <main> 
+      <div className="login">
+        <div className='whiteBox'>
+          <div className='info'>
+            <h1 className="title">
+              Create an Account!
+            </h1>
+            
+            <form>
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+              <label htmlFor="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="Enter your password" required />
+              
+              <button type="submit" id = 'ContinueButton'>Continue</button>
+            </form>
+            
+          </div>
+        </div>
       </div>
     </main>
   );

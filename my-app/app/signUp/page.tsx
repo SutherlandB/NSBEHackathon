@@ -1,5 +1,7 @@
-'use client';
-import React, { useState } from 'react';
+
+
+import { useState } from 'react';
+
 
 const SignUp = () => {
   const [user, setUser] = useState({ fullname: '', username: '', password: '' });
@@ -7,7 +9,7 @@ const SignUp = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch('/signUp.ts', {
+      const response = await fetch('./SignUp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -26,6 +28,7 @@ const SignUp = () => {
     }
   };
 
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -35,7 +38,7 @@ const SignUp = () => {
       <h1>Registration Form</h1>
       <main className="main">
         <div className="logo-container">
-          <img src=" my-app/app/assets/logo.png/" alt="Should You Buy?" className="logo" />
+          <img src='' alt="Should You Buy?" className="logo" />
           <h1 className="title">SHOULD YOU BUY?</h1>
         </div>
         <div className="form-container">

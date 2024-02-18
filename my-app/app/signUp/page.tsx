@@ -1,37 +1,36 @@
-
+'use client'
 
 import { useState } from 'react';
+import {useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 
-const SignUp = () => {
-  const [user, setUser] = useState({ fullname: '', username: '', password: '' });
+export default function SignUp() {
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('./SignUp', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user),
-      });
-      if (response.ok) {
-        // Handle successful signup
-        console.log('User signed up successfully!');
-      } else {
-        // Handle error
-        console.error('Signup failed');
-      }
-    } catch (error) {
-      console.error('Error during signup:', error);
-    }
-  };
+    const router = useRouter();
 
+    const onSubmit = async (data) => {
+        try {
+            const response = await fetch("/api/createuser", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
+            if (response.ok) {
+              
+                router.push("/login");
+                reset();
+            } else {
+              
+                console.error("Registration failed");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
 
   return (
     <div className="container">
@@ -84,4 +83,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+

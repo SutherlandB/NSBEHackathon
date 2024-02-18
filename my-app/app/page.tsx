@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Head from 'next/head';
+import Link from 'next/link'; 
 export default function Home() {
   return (
     
@@ -21,9 +22,11 @@ export default function Home() {
               <button type="submit" id = 'ContinueButton'>Continue</button>
             </form>
             
+            
           </div>
         </div>
       </div>
+      <Link href="/signUp">Sign UP!</Link>
     </main>
   );
 }

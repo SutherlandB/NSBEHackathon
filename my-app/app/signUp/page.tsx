@@ -1,15 +1,17 @@
 
-
+"use client"; // This is a client component
+import React from 'react';
 import { useState } from 'react';
+import Image from 'next/image';
 
 
 const SignUp = () => {
   const [user, setUser] = useState({ fullname: '', username: '', password: '' });
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log('test2');
     e.preventDefault();
     try {
-      const response = await fetch('./SignUp', {
+      const response = await fetch('/api/signUpfun', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +40,7 @@ const SignUp = () => {
       <h1>Registration Form</h1>
       <main className="main">
         <div className="logo-container">
-          <img src='' alt="Should You Buy?" className="logo" />
+        <Image src="/../assets/logo.png" alt="Should You Buy?" className="logo" width={20} height={20} />
           <h1 className="title">SHOULD YOU BUY?</h1>
         </div>
         <div className="form-container">

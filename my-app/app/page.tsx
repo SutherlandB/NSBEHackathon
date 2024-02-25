@@ -1,7 +1,14 @@
 import Image from "next/image";
 import Head from 'next/head';
 import Link from 'next/link'; 
+import {auth} from "@clerk/nextjs";
+import {redirect} from "next/navigation";
 export default function Home() {
+  const userAuth = auth();
+  if(userAuth){
+    redirect('/dashboard');
+  }
+
   return (
     
     <main> 
@@ -22,7 +29,7 @@ export default function Home() {
               <button type="submit" id = 'ContinueButton'>Continue</button>
             </form>
             
-            
+
           </div>
         </div>
       </div>

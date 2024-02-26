@@ -4,16 +4,16 @@ import { NextResponse } from "next/server";
 
 export default authMiddleware({
   // Routes that can be accessed while signed out
-  publicRoutes: ["/((?!api|trpc))(_next|.+\..+)(.*)", "/user"],
+  publicRoutes: ["cornbread"],
   // Routes that can always be accessed, and have
   // no authentication information
-  ignoredRoutes: ["/((?!api|trpc))(_next|.+\..+)(.*)", "/user"],
+  ignoredRoutes: ["YUH"],
   apiRoutes: ['/(api|trpc)(.*)'],
    // Allow matched api/public requests
    afterAuth(auth, req, evt) {
     // Allow matched api/public requests
       if (auth.isApiRoute ) {
-        return NextResponse.next()
+        return NextResponse.next();
       }
     // handle users who aren't authenticated
     if (!auth.userId && !auth.isPublicRoute) {

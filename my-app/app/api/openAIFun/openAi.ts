@@ -3,9 +3,9 @@
 export async function openAIfunc(
     formData: FormData
     ){
-        const userQuery = 'Should I buy a '+ (formData.get('item') as string) + (formData.get('amnt') as string) + '?';
+        var userQuery = 'Should I buy a '+ (formData.get('item') as string) + " that costs $" + (formData.get('amnt') as string) + '?';
 
-        const response = await fetch("http://localhost:3000/api" , {
+        const response = await fetch(`http://localhost:3000/api/openAIFun/${userQuery}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -13,7 +13,8 @@ export async function openAIfunc(
             },
         });
         if (response.ok){
-            console.log("OKAY");
+            console.log(response.json());
+
         }
         else{
             console.log("ERROR");

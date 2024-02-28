@@ -3,7 +3,7 @@ import styles from './signUpStyle.module.css';
  
 export default function Page() {
   return (
-    <body>
+    <body className= {styles.bg}>
       <div className = {styles.signUp} >
     
         <SignUp />

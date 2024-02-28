@@ -9,6 +9,7 @@ import NavBar from '../components/Nav';
 export default async function Dashboard() {
     
     const userId = auth().userId as string;
+    console.log(userId);
     const user = await currentUser();
     const prismaC = new PrismaClient();
     const incomeItems = await prismaC.income.findMany({
@@ -21,7 +22,7 @@ export default async function Dashboard() {
     
   return (
      <body>
-      <NavBar />
+      <NavBar/>
       <main className = {styles.dashboardBody}>
       
       <div>Dashboard Page</div>

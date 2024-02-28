@@ -1,22 +1,33 @@
 import React from 'react';
 import {incomeFun} from "../api/incomeFun/incomeFun";
 import {expenseFun} from "../api/expensesFun/expenseFun";
-import {auth} from "@clerk/nextjs";
+import {auth, currentUser} from "@clerk/nextjs";
 import { PrismaClient } from '@prisma/client';
-
+import styles from './dashboard.module.css';
+import NavBar from '../components/Nav';
 
 export default async function Dashboard() {
-    const user = auth().userId as string;
+    
+    const userId = auth().userId as string;
+    const user = await currentUser();
     const prismaC = new PrismaClient();
     const incomeItems = await prismaC.income.findMany({
-      where: {userId: user}
+      where: {userId: userId}
     });
     const expenseItems = await prismaC.expense.findMany({
-      where: {userId: user}
+      where: {userId: userId}
     });
+
+    
   return (
-      <main>
+     <body>
+      <NavBar />
+      <main className = {styles.dashboardBody}>
+      
       <div>Dashboard Page</div>
+      <div className='Greeting'> 
+      <h1>Hello, {user && user.firstName && user.firstName.toUpperCase()}!</h1>
+      </div>
 
         <form action = {incomeFun}>
           <input type = "text" placeholder = "Source (e.g. job income, stocks, tax return, etc...)" name = "source"></input>  
@@ -38,9 +49,11 @@ export default async function Dashboard() {
           <input type = "number" step = "0.01" placeholder = "Amount ($0.00)" name = "amount2"></input>
           <button type = "submit">Enter</button>
       </form>
-      <br>
+      <br> 
       </br>
       {expenseItems.map(item => <p key={item.source}>{item.freq} {item.source}: ${item.amount}</p>)}
       </main>
+      </body>
+
   );
 }

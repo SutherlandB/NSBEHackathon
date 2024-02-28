@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import {ClerkProvider} from "@clerk/nextjs";
 import NavBar from "./components/Nav";
+import Image from 'next/image'
 
 
 
@@ -19,12 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider> 
       <html lang="en">
-          <body>
-          <NavBar />
-            <div className="stuff">{children}</div>
-          </body>
+      
+        {children}
       </html>
     </ClerkProvider>
   );

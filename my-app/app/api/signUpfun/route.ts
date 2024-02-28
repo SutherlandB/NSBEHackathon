@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
 import Head from 'next/head';
 
+
 const prisma = new PrismaClient();
 
 export async function signUpfunc(formData: FormData) {

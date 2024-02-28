@@ -14,12 +14,10 @@ export async function openAIfunc(
         });
         if (response.ok){
             console.log(response.json());
-
         }
         else{
             console.log("ERROR");
-            
+    
         }
-
 
     }

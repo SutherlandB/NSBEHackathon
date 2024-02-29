@@ -5,6 +5,7 @@ import {auth, currentUser} from "@clerk/nextjs";
 import { PrismaClient } from '@prisma/client';
 import styles from './dashboard.module.css';
 import NavBar from '../components/Nav';
+import ChatSideBar from '../components/chatSideBar';
 
 export default async function Dashboard() {
     
@@ -26,6 +27,22 @@ export default async function Dashboard() {
       <main className = {styles.dashboardBody}>
       
       <div>Dashboard Page</div>
+      <div  className='flex max-h-screen overflow-scroll'>
+        <div className='flex w-full max-h screen overflow-scroll'>
+
+          <div className='flex-[1] max-w-xs'> 
+          <ChatSideBar></ChatSideBar>
+          <div className='flex-[1] max-w-xs'>{/* Chat side bar*/}</div>
+          {/* chat components */}
+          < div className='flex-[3] border-1-4 border-1-slate-200'>
+          {/* Chat components*/}
+          </div>
+
+        </div>
+      </div>
+
+      </div>
+
       <div className='Greeting'> 
       <h1>Hello, {user && user.firstName && user.firstName.toUpperCase()}!</h1>
       </div>

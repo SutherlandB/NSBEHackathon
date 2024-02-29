@@ -1,16 +1,14 @@
+"use client"
 import React from "react";
 
-type ChatSideBarProps = {
+function ChatSideBar() {
+  return (
 
-};
-
-const ChatSideBar = () => {
-    return (
-        <div className='w-full h-screen p-4 text-grey--200 bg-gray-900'>
-        
-        </div>
-    );
+    <div className="chat-sidebar">
+      <h2>Chat SideBar</h2>
+    </div>
+    
+  );
 }
-
 
 export default ChatSideBar;

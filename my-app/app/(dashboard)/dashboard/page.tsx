@@ -15,13 +15,11 @@ import { Input } from '@/components/ui/input';
 import { DataTable } from './dataDisplay/data-table';
 import { DataTable2 } from './dataDisplay/data-table2';
 import {Income, columns} from './dataDisplay/columns';
-import { FormIncome , FormExpense} from '../FormInput/formInput';
+import { FormIncome , FormExpense, FormConveration} from '../FormInput/formInput';
 import { columns2 } from './dataDisplay/columns2';
 
 
-// const formSchema = z.object({
-//   source: z.string()
-// });
+
   
 
 export default async function Dashboard()  {
@@ -40,6 +38,7 @@ export default async function Dashboard()  {
     const incomeItems = await prismaC.income.findMany({
       where: {userId: userId}
     });
+
     const expenseItems = await prismaC.expense.findMany({
       where: {userId: userId}
     });
@@ -50,9 +49,12 @@ export default async function Dashboard()  {
      <body className = {styles.bodyStyle}>
       <main className = {styles.dashboardBody}>
       <div>Dashboard Page</div>
-      <div className='Greeting'> 
+      <div className='Greeting'>  
       <h1>Hello, {user && user.firstName && user.firstName.toUpperCase()}!</h1>
       </div>
+      <div className = "inline">
+        <FormConveration  />
+        </div>
       <div className = {styles.incomeStyle}>
         <div className = {styles.incomeForm}>
           <h1 >Income</h1>

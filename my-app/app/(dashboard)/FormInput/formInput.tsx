@@ -8,6 +8,8 @@ import {incomeFun, incomeEdit} from "../../api/incomeFun/incomeFun";
 import { expenseEdit, expenseFun } from '@/app/api/expensesFun/expenseFun';
 import { Button } from '@/components/ui/button';
 import Link from "next/link"
+import { openAIfunc } from '@/app/api/openAIFun/openAi';
+
 
 
 
@@ -247,6 +249,53 @@ export function FormEdit2({id, frequency, source, amount} : {id:number, frequenc
             <Link href="../dashboard">Cancel</Link>
         </Button>
         </form>
+      </Form>
+    )
+}
+
+export function FormConveration(){
+    const formSchema = z.object({
+        item: z.string(),
+        amount: z.coerce.number(),
+
+      });
+    const form = useForm<z.infer<typeof formSchema>>({
+        //pass configuration zod resolver
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            item: "",
+            amount: 0,
+        }
+      });
+
+    const handleSubmit = (values: z.infer<typeof formSchema>) => {openAIfunc(values)};  
+    return (
+        
+        <Form {...form} >
+            
+        <form className=" flex flex-row " onSubmit={form.handleSubmit(handleSubmit)} >
+        Should I buy...
+        <FormField control = {form.control} name = "item" render = {({field}) => {
+            return <FormItem>
+              <FormControl>
+                <Input className = "w-25" placeholder = "...some item" type = "text" {...field} /> 
+              </FormControl>    
+              <FormMessage /> 
+            </FormItem>
+          }}/> that costs...
+          <FormField control = {form.control} name = "amount" render = {({field}) => {
+            return <FormItem>
+              <FormControl>
+                <Input className = "w-25" type = "number" {...field} /> 
+              </FormControl>    
+              <FormMessage /> 
+            </FormItem>
+          }}/>
+          dollars
+          <Button type = "submit" className = "w-25">Submit</Button>
+
+        </form>
+       
       </Form>
     )
 }

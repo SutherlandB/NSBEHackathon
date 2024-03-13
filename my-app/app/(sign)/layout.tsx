@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import {ClerkProvider} from "@clerk/nextjs";
-import NavBar from "./components/Nav";
+import NavBar from "../components/Nav";
 import Image from 'next/image'
+import '../globals.css';   
 
 
 
@@ -21,8 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider> 
-      <html lang="en">
-      
+      <html lang="en">      
         {children}
       </html>
     </ClerkProvider>

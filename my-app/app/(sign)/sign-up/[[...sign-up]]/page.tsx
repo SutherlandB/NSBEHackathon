@@ -5,7 +5,6 @@ export default function Page() {
   return (
     <body>
       <div className = {styles.signUp} >
-    
         <SignUp />
       </div>
     </body>

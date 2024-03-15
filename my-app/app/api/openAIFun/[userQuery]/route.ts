@@ -1,6 +1,10 @@
 import openai from '../../../utils/openai';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import {NextResponse} from 'next/server';
+import * as p from '../../../../prisma/prismaFunctions'
+import {auth, currentUser} from "@clerk/nextjs";
+
+const userId = auth().userId as string;
 
 type Data = {
     name:string
@@ -11,9 +15,17 @@ export async function GET(
     req: Request, 
     context: any
 ){
-
+    const sumDailyIncome = p.sumIncomeRows(userId, "Daily");
+    const sumWeeklyIncome = p.sumIncomeRows(userId,"Weekly");
+    const sumMonthlyIncome = p.sumIncomeRows(userId,"Monthly");
+    const sumYearlyIncome = p.sumIncomeRows(userId,"Yearly");
+    
+    const sumDailyExpense = p.sumExpenseRows(userId,"Daily");
+    const sumWeeklyExpense = p.sumExpenseRows(userId,"Weekly");
+    const sumMonthlyExpense = p.sumExpenseRows(userId,"Monthly");
+    const sumYearlyExpense = p.sumExpenseRows(userId,"Yearly");
     const { params } = context;
-    console.log(params.userQuery);
+    console.log(sumDailyIncome);
     
 
     // const chatCompletion = await openai.chat.completions.create({
@@ -28,7 +40,7 @@ export async function GET(
     //       });
 
     return NextResponse.json({
-      "Message":"LMAO",
+        Message:"LMAO",
     })
     }
 

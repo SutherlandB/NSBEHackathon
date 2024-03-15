@@ -1,9 +1,17 @@
 'use server'
+import { useSearchParams } from 'next/navigation';
+import * as z from 'zod';
+
+const formSchema = z.object({
+    item: z.string(),
+    amount: z.coerce.number(),
+
+  });
 
 export async function openAIfunc(
-    formData: FormData
+    formData: z.infer<typeof formSchema>
     ){
-        var userQuery = 'Should I buy a '+ (formData.get('item') as string) + " that costs $" + (formData.get('amnt') as string) + '?';
+        var userQuery = 'Should I buy a '+ (formData.item as string) + " that costs $" + (formData.amount) + '?';
 
         const response = await fetch(`http://localhost:3000/api/openAIFun/${userQuery}`, {
             method: 'GET',
@@ -13,7 +21,9 @@ export async function openAIfunc(
             },
         });
         if (response.ok){
-            console.log(response.json());
+            const data = await response.json();
+    
+            console.log(data);
         }
         else{
             console.log("ERROR");

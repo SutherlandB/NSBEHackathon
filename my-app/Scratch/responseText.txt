@@ -1,0 +1,5 @@
+message3: {
+    score: 10,
+    condensedExplanation: '$179972',
+    deeperExplanation: 'You have more than enough money to buy a $3 candy bar, with $179972 remaining after all expenses are accounted for. Enjoy the treat!'
+  }

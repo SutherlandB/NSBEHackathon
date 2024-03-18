@@ -1,0 +1,22 @@
+
+
+.bodyStyle {
+    /* border-width: 300px; */
+    background: linear-gradient(
+      to right,
+      white 0%,
+      white 50%,
+      #1976D2 50%,
+      #1976D2 100%);
+    
+  }
+
+.signIn{
+
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}
+
+
+

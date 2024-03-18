@@ -1,0 +1,124 @@
+
+
+.bodyStyle {
+    background: white;
+    
+}
+
+.dashboardBody {
+    padding-top: 85px;
+}
+
+
+.banner {
+    width: 100%;
+    position:absolute;
+    background: white;
+    display: inline-flex;
+
+}
+
+.incomeDisplay{
+    background: #71AAE9;
+}
+
+.expenseDisplay{
+    background: #71AAE9;
+}
+
+.convoStyle{
+    background: #1A223F;
+    color: white;
+    width: 100%;
+    
+    position: relative;
+}
+
+.FormConversation{
+    position: relative;
+    height: auto; 
+    font-family: 'Helvetica', sans-serif;
+    width: 100%;
+    z-index: 1;
+    background: #1A223F;
+    min-height: 200px;
+
+}
+
+.allForms{
+  
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  background: #71AAE9; 
+}
+
+.incomeForm{
+    position: absolute;
+    left: 25%;   
+    width: 20%;
+}
+
+.incomeDisplay{
+    height: 490px;
+    width: 100%;
+    position: relative;
+}
+
+
+.expenseForm{
+    position: absolute;
+    left: 55%;
+    width: 20%;
+}
+
+.signoutButton{
+    position: absolute;
+    left: 95%;
+    top: 20%;
+}
+
+
+
+.horline{
+    position: absolute;
+    border: 5;
+    border-radius: 2px;
+    width: 80%;               
+    background-color:#71AAE9;   
+    height: 5px;
+    top: 50px;
+    left: 140px;
+    }
+
+.incomeData{
+    width: 50%;
+    left: 25%;
+    position: absolute;
+    overflow: auto;
+}
+
+.expenseDisplay{
+    position: relative;
+    height:490px;
+    width: 100%;
+    
+}
+
+.expenseData{
+    position: absolute;
+    width: 50%;
+    left: 25%;
+}
+
+.outputText {
+    animation: fadeIn 2s;
+    opacity: 50%;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }

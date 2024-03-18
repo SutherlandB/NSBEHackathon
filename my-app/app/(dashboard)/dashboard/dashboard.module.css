@@ -12,7 +12,6 @@
 
 .banner {
     width: 100%;
-    height: 9vh;
     position:absolute;
     background: white;
     display: inline-flex;
@@ -31,19 +30,18 @@
     background: #1A223F;
     color: white;
     width: 100%;
-    height: 360px ;
+    
     position: relative;
-    
-    
 }
 
 .FormConversation{
     position: relative;
-    top: 28%;
-    left: 25%; 
-    height: auto;
+    height: auto; 
     font-family: 'Helvetica', sans-serif;
     width: 100%;
+    z-index: 1;
+    background: #1A223F;
+    min-height: 200px;
 
 }
 
@@ -53,7 +51,7 @@
   flex-direction: row;
   position: relative;
   width: 100%;
-  height: 350px;
+  min-height: 400px;
   background: #71AAE9; 
 }
 
@@ -64,7 +62,7 @@
 }
 
 .incomeDisplay{
-    height: 400px;
+    height: 490px;
     width: 100%;
     position: relative;
 }
@@ -82,10 +80,7 @@
     top: 20%;
 }
 
-.cl-avatarBox{
-    width: 700px;
-    height: 700px;
-}
+
 
 .horline{
     position: absolute;
@@ -102,12 +97,14 @@
     width: 50%;
     left: 25%;
     position: absolute;
+    overflow: auto;
 }
 
 .expenseDisplay{
     position: relative;
-    height:400px;
+    height:490px;
     width: 100%;
+    
 }
 
 .expenseData{
@@ -117,7 +114,8 @@
 }
 
 .outputText {
-    animation: fadeIn 5s;
+    animation: fadeIn 2s;
+    opacity: 50%;
 }
 
 @keyframes fadeIn {

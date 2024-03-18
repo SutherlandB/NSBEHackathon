@@ -38,24 +38,24 @@ export async function GET(
     " and my extra weekly expenses cost $" + (sumWeeklyExpense._sum.amount  ? sumWeeklyExpense._sum.amount : 0) + " and my extra daily expenses cost $" + (sumDailyExpense._sum.amount  ? sumDailyExpense._sum.amount : 0) + "." + 
     " On a scale of 1 to 10, " + query + " You must give a score. Format your response in a JSON object with the keys score, condensedExplanation, deeperExplanation In the condensedExplanation key, mention the quantity of how much money would remain.";
 
-    // const chatCompletion = await openai.chat.completions.create({
-    //         model: 'gpt-3.5-turbo',
-    //         messages: [{ role: 'user', content: finalQuery }],
+    const chatCompletion = await openai.chat.completions.create({
+            model: 'gpt-3.5-turbo',
+            messages: [{ role: 'user', content: finalQuery }],
             
-    //       });
-    // const responseText = await chatCompletion.choices[0].message;
+          });
+    const responseText = await chatCompletion.choices[0].message;
 
-    // const content = responseText.content;
-    // const newContent = JSON.stringify(content);
-    // const gptContent = JSON.parse(JSON.parse(newContent));
+    const content = responseText.content;
+    const newContent = JSON.stringify(content);
+    const gptContent = JSON.parse(JSON.parse(newContent));
     
     
     return NextResponse.json({
-        //gptContent
-        gptContent: {
-            score: 4,
-            deeperExplanation: "Based on the income and expense data provided, purchasing a car that costs $19 would have minimal impact on your overall financial health. With a yearly income of $180,000 and yearly expenses of $6,000, you have a significant amount of surplus income. Even after accounting for monthly, weekly, and daily expenses, you still have a large amount of disposable income available. Therefore, buying a car that costs $19 would not have a significant impact on your financial stability, and it would be a reasonable purchase."
-        }
+        gptContent
+        // gptContent: {
+        //     score: 4,
+        //     deeperExplanation: "Based on the income and expense data provided, purchasing a car that costs $19 would have minimal impact on your overall financial health. With a yearly income of $180,000 and yearly expenses of $6,000, you have a significant amount of surplus income. Even after accounting for monthly, weekly, and daily expenses, you still have a large amount of disposable income available. Therefore, buying a car that costs $19 would not have a significant impact on your financial stability, and it would be a reasonable purchase."
+        // }
     
     });
 }

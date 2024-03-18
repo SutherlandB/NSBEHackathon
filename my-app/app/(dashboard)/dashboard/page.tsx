@@ -51,13 +51,13 @@ export default async function Dashboard()  {
     
      <body className = {styles.bodyStyle}>
       <div className = {styles.banner}>
-        <Image src= "/logo.png" width = {100} height = {300} className="logo" alt = "Should You Buy? Logo" />
+        <Image src= "/logo.png" width = {100} height = {100} className="logo" alt = "Should You Buy? Logo" />
         <hr className = {styles.horline} />
         <div className = {styles.signoutButton}>
           <UserButton afterSignOutUrl="/" appearance={{
             elements: {
               avatarBox:
-                "w-10 h-10",
+                "w-12 h-12",
             },
           }}/>
         </div>
